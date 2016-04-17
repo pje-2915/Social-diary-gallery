@@ -98,7 +98,7 @@ div.container {
 /* Navigation Menus - use two div so we can filter items by div location for screen size */
 
 .navdiv {
-	height:80px;
+	overflow:hidden;
 }
 
 .site-nav-small ul {
@@ -125,12 +125,24 @@ div.container {
 	background-color:#333333;
 }
 
+/* the hyperlink that hides shows the extra menu items */
+.navdiv-small-mid a {
+	border: 1px solid #AAA;
+	padding: 8px;
+	margin-right:4px;
+	float: left;
+	text-decoration: none;
+}
 /* the hyperlink that contains the icon */
 .navdiv-small-right a {
 	line-height:0;
 	font-size:0;
 }
 
+#hidden_nav_menu {
+	display:none;
+}
+	
 .site-nav-med-large ul {
 	margin: 0;
 	padding: 0;

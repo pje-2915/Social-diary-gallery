@@ -13,6 +13,22 @@
 			alert(rawtext);
 		}
 
+	    function toggle_hidden_menu(buttonId, targetId, onTxt, offTxt)
+	    {
+	       var e = document.getElementById(targetId);
+	       var b = document.getElementById(buttonId);
+	       if(e.style.display == 'block')
+	       {
+	          e.style.display = 'none';
+	          b.innerHTML = onTxt;
+	       }
+	       else
+	       {
+	          e.style.display = 'block';
+	          b.innerHTML = offTxt;
+	       }
+	    }
+
 		</script>
 	</head>
 	
@@ -45,13 +61,16 @@
 						<?php wp_nav_menu( $args ); ?>
 					</nav>
 				</div>
+				<div class="navdiv-small-mid">
+					<a id="hideshowButton" href="#" onclick="toggle_hidden_menu('hideshowButton','hidden_nav_menu','More Items','Less Items');">More Items</a>
+				</div>
 				<div class="navdiv-small-right">
 					<a href="http://www.ramblers.org.uk/go-walking.aspx">
 					<img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25">
 					bob</a>
 				</div>
 			</div>
-			<div class="navdiv-hidden">
+			<div class="navdiv-hidden" id="hidden_nav_menu">
 				<nav class="site-nav-hidden">
 					<?php 
 					$args = array(

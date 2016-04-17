@@ -7,6 +7,18 @@
 		<?php wp_head(); ?>
 		
 		<script>
+
+		window.onresize = function(event) {
+			if(document.body.offsetWidth >= 900)
+			{
+			      var e = document.getElementById('hidden_nav_menu');
+			      var b = document.getElementById('hideshowButton');
+				
+		          e.style.display = 'none';
+		          b.innerHTML = 'More Items';
+			}
+		};
+		
 		function revealContact(encodedTxt)
 		{
 			var rawtext = window.atob(encodedTxt);

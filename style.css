@@ -1,0 +1,301 @@
+/*
+Theme Name: Social-diary-gallery
+Author: Paul Edwards
+Author URI: 
+Version 1.0
+*/
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #333;
+	margin:0px;
+	padding:0px;
+}
+
+a:link,
+a:visited {
+	color: #40b0ff;
+}
+
+p {
+	line-height: 1.65em;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 5px;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+th {
+    background-color: green;
+    color: white;
+}
+
+input, button, select, option, textarea {
+    font-size: 100%;
+}
+
+div.container {
+	background-color: #005000;
+	max-width: 2000px;
+	margin: 0 auto;
+	padding: 0px;
+}
+
+.midpage {
+	clear:left;
+    display:flex;
+}
+
+.resourcecolumn {
+	background-color: #00E000;
+}
+
+.resourcecolumn a:link {
+	color: #0078d5;
+}
+.resourcecolumn a:visited {
+	color: #0078d5;
+}
+
+#sidebar {
+	padding-right:10px;
+}
+
+.blogcolumn {
+    /* This makes the element grow and take all available space, not taken by the sidebar */
+    flex-grow:1;
+	background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Resize images otherwise the blogcolumn won't shrink below the width of any fixed side image.
+   this is not a very good solution since now any image will occupy 95% of the page width. */
+.blogcolumn img{
+    width:95%;
+    height:auto;
+}
+
+.headerdiv {
+	background-color: green;
+}
+
+.headerdiv a {
+	margin: 5px;
+}
+
+.headerdiv h5 {
+	margin: 5px;
+}
+
+.headerdiv h1 {
+	margin: 0px;
+}
+
+/* Navigation Menus - use two div so we can filter items by div location for screen size */
+
+.navdiv {
+	height:80px;
+}
+
+.site-nav-small ul {
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav-small ul:before, .site-nav-small ul:after {content: ""; display: table; }
+.site-nav-small ul:after {clear: both; }
+
+.navdiv-small-left {
+	float: left;
+}
+.site-nav-small ul li {
+	list-style: none;
+}
+
+/* The icon that sits on the right hand side of the small-screen nav menu */
+.navdiv-small-right img{
+	border: 1px solid #AAA;
+	padding-top:4px;
+	padding-left:4px;
+	padding-bottom:3px;
+	background-color:#333333;
+}
+
+/* the hyperlink that contains the icon */
+.navdiv-small-right a {
+	line-height:0;
+	font-size:0;
+}
+
+.site-nav-med-large ul {
+	margin: 0;
+	padding: 0;
+}
+
+.site-nav-med-large ul:before, .site-nav-med-large ul:after {content: ""; display: table; }
+.site-nav-med-large ul:after {clear: both; }
+
+.site-nav-med-large ul li {
+	list-style: none;
+}
+
+/* Smartphone */
+@media screen and (min-width: 0px)
+{
+	.headerdiv {
+		font-size: 120%;
+	   	text-align: center;
+	   	padding: 7px;
+	}
+
+	div.container {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	.resourcecolumn {
+	    /* Give the sidebar a default width, and prevent it from shrinking */
+	    flex-shrink:0;
+	    display: none;
+	}
+
+	.navdiv-small {
+		display: block;
+	}
+	
+	.site-nav-med-large {
+		display: none;
+	}
+}
+/* Tablet */
+@media screen and (min-width: 900px)
+{
+	.headerdiv {
+		font-size: 150%;
+		text-align: center;
+	   	padding: 10px;
+	}
+	.resourcecolumn {
+	    /* Give the sidebar a default width, and prevent it from shrinking */
+	    flex-shrink:0;
+	    width:300px;
+	    display: inline;
+	}
+	
+	.navdiv-small {
+		display: none;
+	}
+	
+	.site-nav-med-large {
+		display: block;
+	}
+}
+/* PC */
+@media screen and (min-width: 1500px)
+{
+	.headerdiv {
+		font-size: 200%;
+		text-align: center;
+	   	padding: 5px;
+	}
+	
+	.resourcecolumn {
+	    /* Give the sidebar a default width, and prevent it from shrinking */
+	    flex-shrink:0;
+	    width:300px;
+	    display: inline;
+	}
+	
+	.navdiv-small {
+		display: none;
+	}
+	
+	.site-nav-med-large {
+		display: block;
+	}
+}
+
+.resourcecolumn h2 {
+	margin-bottom: 5px;
+}
+
+/* post */
+article.post {
+	border-bottom: 2px dotted #AAA;
+}
+
+article.post:last-of-type {
+	border-bottom: none;
+}
+
+/* header */
+.site-header {
+	border-bottom: 2px solid #999;
+}
+
+/* footer */
+.site-footer-div {
+	clear:left;
+	background-color:green;
+	height:20;
+	border:6px solid green;
+}
+
+.site-footer-div h2 {
+	text-align:center;
+	margin-top:0px;
+	margin-bottom:0px;
+	margin-left:10px;
+	padding:0px;
+}
+
+/* Site Header Menu */
+
+.site-header nav ul li {
+	float:left;
+	margin-right: 5px;
+}
+.site-header nav ul li a:link,
+.site-header nav ul li a:visited {
+	display: block;
+	padding: 8px 8px;
+	border: 1px solid #AAA;
+	text-decoration: none;
+}
+
+/* Tablet */
+@media screen and (min-width: 900px)
+{
+	.site-header nav ul li a:link,
+	.site-header nav ul li a:visited {
+		padding: 10px 18px;
+	}
+}
+
+/* Hidden Phone Menu */
+#menu-phone-second-menu {margin: 0; padding: 0; 
+	list-style-type: none; list-style-image: none; }
+
+.navdiv-hidden {
+	margin-top:4px;
+	display:block;
+}
+
+.site-header nav ul li.current-menu-item a:link,
+.site-header nav ul li.current-menu-item a:visited {
+	background-color: #006ec3;
+	color: #fff;
+}
+
+.maptable {
+	width: 95%;
+}
+
+#walkfinder {
+	border: 6px solid #333333;
+	margin-bottom: 10px;
+}

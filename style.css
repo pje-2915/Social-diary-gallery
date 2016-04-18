@@ -102,6 +102,15 @@ div.container {
 	text-align:center;
 }
 
+.site-nav-small  {
+	text-align:center;
+	display:inline-block;
+}
+
+#hideshowButton {
+	margin-bottom:3px;
+}
+
 .site-nav-small ul {
 	margin: 0;
 	padding: 0;
@@ -123,6 +132,7 @@ div.container {
 	padding-top:4px;
 	padding-left:4px;
 	padding-bottom:3px;
+	margin-bottom:3px;
 	background-color:#333333;
 	float:left;
 }
@@ -296,8 +306,14 @@ article.post:last-of-type {
 	list-style-type: none; list-style-image: none; }
 
 .navdiv-hidden {
-	margin-top:4px;
 	display:block;
+}
+
+.navdiv-hidden ul li {
+}
+
+.navdiv-hidden a {
+	margin-bottom: 3px;
 }
 
 .site-header nav ul li.current-menu-item a:link,

@@ -18,6 +18,11 @@ a:visited {
 	color: #40b0ff;
 }
 
+ul li.current-menu-item a:link,
+ul li.current-menu-item a:visited {
+	color: #00FF00;
+}
+
 p {
 	line-height: 1.65em;
 }
@@ -45,7 +50,6 @@ div.container {
 }
 
 .midpage {
-	clear:left;
     display:flex;
 }
 
@@ -79,101 +83,74 @@ div.container {
     height:auto;
 }
 
-.headerdiv {
+#headerdiv {
 	background-color: green;
 }
 
-.headerdiv a {
+#headerdiv a {
 	margin: 5px;
 }
 
-.headerdiv h5 {
+#headerdiv h5 {
 	margin: 5px;
 }
 
-.headerdiv h1 {
+#headerdiv h1 {
 	margin: 0px;
+	text-align:center;
 }
 
 /* Navigation Menus - use two div so we can filter items by div location for screen size */
 
 .navdiv {
 	overflow:hidden;
-	text-align:center;
 }
 
-.site-nav-small  {
-	text-align:center;
-	display:inline-block;
+#navdiv-hidden 
+{
+	display:none;
+	width:100%;
 }
 
-#hideshowButton {
-	margin-bottom:3px;
-}
-
-.site-nav-small ul {
-	margin: 0;
-	padding: 0;
-}
-
-.site-nav-small ul:before, .site-nav-small ul:after {content: ""; display: table; }
-.site-nav-small ul:after {clear: both; }
-
-.navdiv-small-left {
-	float: left;
-}
-.site-nav-small ul li {
+#navdiv ul {
 	list-style: none;
+	display:table-row;
+	margin: 0px;
+	padding: 0px;
+}
+
+#navdiv li {
+	display:table-cell;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	border: 1px solid #AAA;
 }
 
 /* The icon that sits on the right hand side of the small-screen nav menu */
-.navdiv-small-right img{
-	border: 1px solid #AAA;
-	padding-top:4px;
-	padding-left:4px;
-	padding-bottom:3px;
-	margin-bottom:3px;
+#navdiv img{
 	background-color:#333333;
-	float:left;
+	line-height:0px;
+	font-size:0px;
+	display:inline-block;
+	vertical-align:middle;
 }
 
-/* the hyperlink that hides shows the extra menu items */
-.navdiv-small-mid a {
-	border: 1px solid #AAA;
-	padding: 8px;
-	margin-right:4px;
-	float: left;
+#navdiv a:link,
+#navdiv a:visited {
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
 	text-decoration: none;
-}
-/* the hyperlink that contains the icon */
-.navdiv-small-right a {
-	line-height:0;
-	font-size:0;
-}
-
-#hidden_nav_menu {
-	clear:left;
-	display:none;
-}
-	
-.site-nav-med-large ul {
-	margin: 0;
-	padding: 0;
-}
-
-.site-nav-med-large ul:before, .site-nav-med-large ul:after {content: ""; display: table; }
-.site-nav-med-large ul:after {clear: both; }
-
-.site-nav-med-large ul li {
-	list-style: none;
 }
 
 /* Smartphone */
 @media screen and (min-width: 0px)
 {
-	.headerdiv {
+	#headerdiv {
 		font-size: 120%;
-	   	text-align: center;
 	   	padding: 7px;
 	}
 
@@ -188,18 +165,23 @@ div.container {
 	    display: none;
 	}
 
-	.navdiv-small {
-		display: block;
+	#navdiv-small {
+		display: table;
+		width:100%
 	}
 	
-	.site-nav-med-large {
+	#navdiv-large {
 		display: none;
+	}
+	
+	#headerdiv h5 {
+		display:none;
 	}
 }
 /* Tablet */
 @media screen and (min-width: 900px)
 {
-	.headerdiv {
+	#headerdiv {
 		font-size: 150%;
 		text-align: center;
 	   	padding: 10px;
@@ -211,18 +193,23 @@ div.container {
 	    display: inline;
 	}
 	
-	.navdiv-small {
+	#navdiv-small {
 		display: none;
 	}
 	
-	.site-nav-med-large {
-		display: block;
+	#navdiv-large {
+		display: table;
+		width:100%
+	}
+	
+	#headerdiv h5 {
+		display:inline;
 	}
 }
 /* PC */
 @media screen and (min-width: 1500px)
 {
-	.headerdiv {
+	#headerdiv {
 		font-size: 200%;
 		text-align: center;
 	   	padding: 5px;
@@ -235,12 +222,17 @@ div.container {
 	    display: inline;
 	}
 	
-	.navdiv-small {
+	#navdiv-small {
 		display: none;
 	}
 	
-	.site-nav-med-large {
-		display: block;
+	#navdiv-large {
+		display: table;
+		width:100%
+	}
+	
+	#headerdiv h5 {
+		display:inline;
 	}
 }
 
@@ -264,10 +256,9 @@ article.post:last-of-type {
 
 /* footer */
 .site-footer-div {
-	clear:left;
 	background-color:green;
-	height:20;
 	border:6px solid green;
+	overflow:hidden;
 }
 
 .site-footer-div h2 {
@@ -276,50 +267,6 @@ article.post:last-of-type {
 	margin-bottom:0px;
 	margin-left:10px;
 	padding:0px;
-}
-
-/* Site Header Menu */
-
-.site-header nav ul li {
-	float:left;
-	margin-right: 5px;
-}
-.site-header nav ul li a:link,
-.site-header nav ul li a:visited {
-	display: block;
-	padding: 8px 8px;
-	border: 1px solid #AAA;
-	text-decoration: none;
-}
-
-/* Tablet */
-@media screen and (min-width: 900px)
-{
-	.site-header nav ul li a:link,
-	.site-header nav ul li a:visited {
-		padding: 10px 18px;
-	}
-}
-
-/* Hidden Phone Menu */
-#menu-phone-second-menu {margin: 0; padding: 0; 
-	list-style-type: none; list-style-image: none; }
-
-.navdiv-hidden {
-	display:block;
-}
-
-.navdiv-hidden ul li {
-}
-
-.navdiv-hidden a {
-	margin-bottom: 3px;
-}
-
-.site-header nav ul li.current-menu-item a:link,
-.site-header nav ul li.current-menu-item a:visited {
-	background-color: #006ec3;
-	color: #fff;
 }
 
 .maptable {

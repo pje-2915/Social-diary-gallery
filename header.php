@@ -11,7 +11,7 @@
 		window.onresize = function(event) {
 			if(document.body.offsetWidth >= 900)
 			{
-			      var e = document.getElementById('hidden_nav_menu');
+			      var e = document.getElementById('navdiv-hidden');
 			      var b = document.getElementById('hideshowButton');
 				
 		          e.style.display = 'none';
@@ -29,14 +29,14 @@
 	    {
 	       var e = document.getElementById(targetId);
 	       var b = document.getElementById(buttonId);
-	       if(e.style.display == 'block')
+	       if(e.style.display == 'table')
 	       {
 	          e.style.display = 'none';
 	          b.innerHTML = onTxt;
 	       }
 	       else
 	       {
-	          e.style.display = 'block';
+	          e.style.display = 'table';
 	          b.innerHTML = offTxt;
 	       }
 	    }
@@ -49,47 +49,52 @@
 <div class="container">
 	<!-- site-header -->
 	<header class="site-header">
-		<div class="headerdiv">
+		<div id="headerdiv">
 			<h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name');?></a></h1>
 			<h5><?php bloginfo('description'); ?></h5>
 		</div>	
-		<div class="navdiv">
-			<nav class="site-nav-med-large">
+		<div id="navdiv">
+		
+			<!-- *********  Menu for large screens  *********** -->
+			
+			<div id="navdiv-large">
 				<?php 
 				$args = array(
-						'theme_location' => 'primary-med-large'
-						);s
+						'theme_location' => 'primary-med-large',
+						'container' => false);
+				?>
+				<?php wp_nav_menu( $args ); ?>		
+			</div>
+			
+			<!-- *********  Menu for small screens  *********** -->
+			
+			<div id="navdiv-small">
+				<ul>
+				<?php 
+				$args = array(
+						'theme_location' => 'primary-small',
+						'container' => false,
+						'items_wrap' => '%3$s'
+				);
 				?>
 				<?php wp_nav_menu( $args ); ?>
-			</nav>
-			<div class="navdiv-small">
-				<div class="navdiv-small-left">
-					<nav class="site-nav-small">
-						<?php 
-						$args = array(
-								'theme_location' => 'primary-small'
-								);
-						?>
-						<?php wp_nav_menu( $args ); ?>
-					</nav>
-				</div>
-				<div class="navdiv-small-mid">
-					<a id="hideshowButton" href="#" onclick="toggle_hidden_menu('hideshowButton','hidden_nav_menu','More Items','Less Items');">More Items</a>
-				</div>
-				<div class="navdiv-small-right">
-					<a href="http://www.ramblers.org.uk/go-walking.aspx">
-					<img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25">
-					bob</a>
-				</div>
+					<li>
+						<a id="hideshowButton" href="#" onclick="toggle_hidden_menu('hideshowButton','navdiv-hidden','More Items','Less Items');">More Items</a>
+					</li>
+					<li id="imgcell">
+						<a id="imglink" href="http://www.ramblers.org.uk/go-walking.aspx"><img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25"></a>
+					</li>
+				</ul>	
 			</div>
-			<div class="navdiv-hidden" id="hidden_nav_menu">
-				<nav class="site-nav-hidden">
-					<?php 
-					$args = array(
-							'theme_location' => 'phone-second-menu'
-							);
-					wp_nav_menu( $args ); ?>
-				</nav>
+			
+			<!-- *********  Hidden menu for small screens  ********** -->
+			
+			<div id="navdiv-hidden" id="hidden_nav_menu">
+				<?php 
+				$args = array(
+						'theme_location' => 'phone-second-menu',
+						'container' => false);
+				wp_nav_menu( $args ); ?>
 			</div>
 		</div>
 		

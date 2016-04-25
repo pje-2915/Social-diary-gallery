@@ -17,4 +17,7 @@ register_nav_menus(array(
 ));
 
 if ( function_exists('register_sidebar') )
+{
 	register_sidebar();
+	register_sidebar(array('name'=>'Hidden Search Widget',));
+}

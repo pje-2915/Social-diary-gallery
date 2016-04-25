@@ -112,6 +112,12 @@ div.container {
 	width:100%;
 }
 
+#hidden-search
+{
+	display:none;
+	width:100%;
+}
+
 #navdiv ul {
 	list-style: none;
 	display:table-row;
@@ -179,7 +185,7 @@ div.container {
 	}
 }
 /* Tablet */
-@media screen and (min-width: 900px)
+@media screen and (min-width: 800px)
 {
 	#headerdiv {
 		font-size: 150%;

@@ -9,13 +9,17 @@
 		<script>
 
 		window.onresize = function(event) {
-			if(document.body.offsetWidth >= 900)
+			if(document.body.offsetWidth >= 800)
 			{
-			      var e = document.getElementById('navdiv-hidden');
-			      var b = document.getElementById('hideshowButton');
+			      var e1 = document.getElementById('navdiv-hidden');
+			      var b1 = document.getElementById('hideshowButton1');
+			      var e2 = document.getElementById('hidden-search');
+			      var b2 = document.getElementById('hideshowButton2');
 				
-		          e.style.display = 'none';
-		          b.innerHTML = 'More Items';
+		          e1.style.display = 'none';
+		          b1.innerHTML = 'More Items';
+		          e2.style.display = 'none';
+		          b2.innerHTML = 'Shows Search';
 			}
 		};
 		
@@ -79,7 +83,10 @@
 				?>
 				<?php wp_nav_menu( $args ); ?>
 					<li>
-						<a id="hideshowButton" href="#" onclick="toggle_hidden_menu('hideshowButton','navdiv-hidden','More Items','Less Items');">More Items</a>
+						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('hideshowButton1','navdiv-hidden','More Items','Less Items');">More Items</a>
+					</li>
+					<li>
+						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('hideshowButton2','hidden-search','Show Search','Hide Search');">Show Search</a>
 					</li>
 					<li id="imgcell">
 						<a id="imglink" href="http://www.ramblers.org.uk/go-walking.aspx"><img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25"></a>
@@ -95,6 +102,11 @@
 						'theme_location' => 'phone-second-menu',
 						'container' => false);
 				wp_nav_menu( $args ); ?>
+			</div>
+			
+			<div id="hidden-search">
+				<?php if (!dynamic_sidebar('Hidden Search Widget') ) : ?>
+				<?php endif; ?>
 			</div>
 		</div>
 		

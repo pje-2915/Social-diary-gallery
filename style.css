@@ -5,7 +5,13 @@ Author URI:
 Version 1.0
 */
 
+html {
+	height:100%;
+    overflow-x:hidden;
+}
+
 body {
+	height:100%;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	color: #333;
@@ -47,14 +53,19 @@ div.container {
 	max-width: 2000px;
 	margin: 0 auto;
 	padding: 0px;
+	height:100%;
 }
 
 .midpage {
     display:flex;
+    overflow:hidden;
 }
 
 .resourcecolumn {
 	background-color: #00E000;
+	height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .resourcecolumn a:link {
@@ -64,16 +75,15 @@ div.container {
 	color: #0078d5;
 }
 
-#sidebar {
-	padding-right:10px;
-}
-
 .blogcolumn {
     /* This makes the element grow and take all available space, not taken by the sidebar */
     flex-grow:1;
 	background-color: white;
     padding-left: 10px;
     padding-right: 10px;
+	height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 /* Resize images otherwise the blogcolumn won't shrink below the width of any fixed side image.
@@ -85,6 +95,7 @@ div.container {
 
 #headerdiv {
 	background-color: green;
+	text-align:center;
 }
 
 #headerdiv a {
@@ -92,20 +103,14 @@ div.container {
 }
 
 #headerdiv h5 {
-	margin: 5px;
+	margin: 0px;
 }
 
 #headerdiv h1 {
 	margin: 0px;
-	text-align:center;
 }
 
 /* Navigation Menus - use two div so we can filter items by div location for screen size */
-
-.navdiv {
-	overflow:hidden;
-}
-
 #navdiv-hidden 
 {
 	display:none;
@@ -158,11 +163,16 @@ div.container {
 	#headerdiv {
 		font-size: 120%;
 	   	padding: 7px;
+	   	height:53px;
 	}
 
-	div.container {
-		padding-left: 0px;
-		padding-right: 0px;
+	#headerdiv h1 {
+		font-size: 33px;
+		padding:5px;
+	}
+
+	.midpage {
+	    height:calc(100% - 53px - 37px - 20px);
 	}
 
 	.resourcecolumn {
@@ -188,10 +198,23 @@ div.container {
 @media screen and (min-width: 800px)
 {
 	#headerdiv {
-		font-size: 150%;
 		text-align: center;
-	   	padding: 10px;
+	   	height:84px;
 	}
+	
+	#headerdiv h1 {
+		font-size: 33px;
+		padding:5px;
+	}
+	
+	#headerdiv h5 {
+		font-size: 18px;
+	}
+	
+	.midpage {
+	    height:calc(100% - 84px - 29px - 20px);
+	}
+
 	.resourcecolumn {
 	    /* Give the sidebar a default width, and prevent it from shrinking */
 	    flex-shrink:0;
@@ -216,9 +239,21 @@ div.container {
 @media screen and (min-width: 1500px)
 {
 	#headerdiv {
-		font-size: 200%;
 		text-align: center;
-	   	padding: 5px;
+	   	height:93px;
+	}
+	
+	#headerdiv h1 {
+		font-size: 40px;
+		padding:5px;
+	}
+	
+	#headerdiv h5 {
+		font-size: 20px;
+	}
+
+	.midpage {
+	    height:calc(100% - 93px - 29px - 20px);
 	}
 	
 	.resourcecolumn {
@@ -262,17 +297,20 @@ article.post:last-of-type {
 
 /* footer */
 .site-footer-div {
+	text-align:center;
 	background-color:green;
-	border:6px solid green;
 	overflow:hidden;
+	height:20px;
+	position:absolute;
+	bottom:0;
+	width:100%;
 }
 
 .site-footer-div h2 {
-	text-align:center;
-	margin-top:0px;
-	margin-bottom:0px;
-	margin-left:10px;
+	margin:0px;
 	padding:0px;
+	padding-top:2px;
+	font-size:14px;
 }
 
 .maptable {

@@ -66,8 +66,7 @@
 				$args = array(
 						'theme_location' => 'primary-med-large',
 						'container' => false);
-				?>
-				<?php wp_nav_menu( $args ); ?>		
+				wp_nav_menu( $args ); ?>		
 			</div>
 			
 			<!-- *********  Menu for small screens  *********** -->
@@ -75,13 +74,12 @@
 			<div id="navdiv-small">
 				<ul>
 				<?php 
-				$args = array(
-						'theme_location' => 'primary-small',
-						'container' => false,
-						'items_wrap' => '%3$s'
-				);
-				?>
-				<?php wp_nav_menu( $args ); ?>
+					$args = array(
+							'theme_location' => 'primary-small',
+							'container' => false,
+							'items_wrap' => '%3$s'
+					);
+					wp_nav_menu( $args ); ?>
 					<li>
 						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('hideshowButton1','navdiv-hidden','More Items','Less Items');">More Items</a>
 					</li>

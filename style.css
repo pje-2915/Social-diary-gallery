@@ -7,7 +7,7 @@ Version 1.0
 
 html {
 	height:100%;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 body {
@@ -314,6 +314,25 @@ article.post:last-of-type {
 
 .maptable {
 	width: 95%;
+}
+
+.eventdatatable td {
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.eventdatatable input {
+	color:#40b0ff;
+}
+
+.eventdatatable p {
+	margin:0px;
+}
+
+.eventdatatable input {
+	background-color:#005000;
+    -webkit-border-radius: 7px;
+    border-radius: 7px; 
 }
 
 #walkfinder {

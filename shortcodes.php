@@ -10,13 +10,3 @@ function makeHiddenContact($atts)
 	<input type="button" value="Contact" onclick="revealContact('<?php echo base64_encode($contactstr); ?>')" />
 	<?php
 }
-
-add_shortcode('rendezvous', 'makeRendezvouz');
-function makeRendezvouz($atts)
-{
-	$atts = shortcode_atts(array('description' => '','postcode' => '', 'time' => ''), $atts);
-	?>
-	<input type="button" onclick="location.href='http://google.com/maps?q=<?php echo $atts['postcode']; ?>';" value="Go to Google Maps" />
-	<h3><?php echo $atts['description'] . ", " . $atts['postcode'] . " at " . $atts['time']; ?></h3>
-	<?php
-}

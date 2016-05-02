@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width">
 		<title><?php bloginfo('name'); ?></title>
 		<?php wp_head(); ?>
-		
+
 		<script>
 
 		window.onresize = function(event) {
@@ -17,9 +17,9 @@
 			      var b2 = document.getElementById('hideshowButton2');
 				
 		          e1.style.display = 'none';
-		          b1.innerHTML = 'More Items';
+		          b1.innerHTML = '&#9776';
 		          e2.style.display = 'none';
-		          b2.innerHTML = 'Shows Search';
+		          b2.innerHTML = '?';
 			}
 		};
 		
@@ -81,10 +81,10 @@
 					);
 					wp_nav_menu( $args ); ?>
 					<li>
-						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('hideshowButton1','navdiv-hidden','More Items','Less Items');">More Items</a>
+						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('hideshowButton1','navdiv-hidden','&#9776','&#9776');">&#9776</a>
 					</li>
 					<li>
-						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('hideshowButton2','hidden-search','Show Search','Hide Search');">Show Search</a>
+						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('hideshowButton2','hidden-search','?','?');">?</a>
 					</li>
 					<li id="imgcell">
 						<a id="imglink" href="http://www.ramblers.org.uk/go-walking.aspx"><img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25"></a>

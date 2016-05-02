@@ -158,6 +158,10 @@ div.container {
 	text-decoration: none;
 }
 
+#imgcell {
+	background-color:#333333;
+}
+
 /* Smartphone */
 @media screen and (min-width: 0px)
 {

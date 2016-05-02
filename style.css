@@ -100,6 +100,7 @@ div.container {
 
 #headerdiv a {
 	margin: 5px;
+	text-decoration: none;
 }
 
 #headerdiv h5 {
@@ -171,7 +172,7 @@ div.container {
 	}
 
 	.midpage {
-	    height:calc(100% - 53px - 37px - 20px);
+	    height:calc(100% - 53px - 37px - 35px);
 	}
 
 	.resourcecolumn {
@@ -211,7 +212,7 @@ div.container {
 	}
 	
 	.midpage {
-	    height:calc(100% - 84px - 29px - 20px);
+	    height:calc(100% - 84px - 29px - 35px);
 	}
 
 	.resourcecolumn {
@@ -252,7 +253,7 @@ div.container {
 	}
 
 	.midpage {
-	    height:calc(100% - 93px - 29px - 20px);
+	    height:calc(100% - 93px - 29px - 35px);
 	}
 	
 	.resourcecolumn {
@@ -299,17 +300,27 @@ article.post:last-of-type {
 	text-align:center;
 	background-color:green;
 	overflow:hidden;
-	height:20px;
+	height:35px;
 	position:absolute;
 	bottom:0;
 	width:100%;
 }
 
-.site-footer-div h2 {
+.site-footer-div p {
 	margin:0px;
 	padding:0px;
-	padding-top:2px;
-	font-size:14px;
+	padding-top:4px;
+	color:#fff;
+	color: #40B0FF;
+	font-size:10px;
+}
+
+
+.site-footer-div p img {
+	margin:0px;
+	padding-left:3px;
+	padding-right:3px;
+	vertical-align: middle;
 }
 
 .maptable {

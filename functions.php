@@ -88,7 +88,7 @@ $meta_box = array(
             'name' => 'Postcode',
             'desc' => '',
             'id' => $prefix . 'postcode',
-            'type' => 'text',
+            'type' => 'postcode',
             'std' => 'TBD'
         ),
         array(
@@ -151,12 +151,21 @@ function mytheme_show_box() {
 	    	'function validateHHMM(inputField) {',
 	        	'var isValid = /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(inputField.value);',
 	        	'if (isValid) {',
-	            'inputField.style.backgroundColor = "#fff";',
+	            	'inputField.style.backgroundColor = "#fff";',
 	        	'} else {',
-	            'inputField.style.backgroundColor = "#fba";',
-	        '}',
-	        'return isValid;',
-	    '}',
+	            		'inputField.style.backgroundColor = "#fba";',
+	        	'}',
+	        	'return isValid;',
+	    	'}',
+	    	'function validatePostcode(inputField) {',
+	        	'var isValid = /^([a-zA-Z]){1}([0-9][0-9]|[0-9]|[a-zA-Z][0-9][a-zA-Z]|[a-zA-Z][0-9][0-9]|[a-zA-Z][0-9]){1}([ ])([0-9][a-zA-z][a-zA-z]){1}$/.test(inputField.value);',
+	        	'if (isValid) {',
+	            	'inputField.style.backgroundColor = "#fff";',
+	        	'} else {',
+	            		'inputField.style.backgroundColor = "#fba";',
+	        	'}',
+	        	'return isValid;',
+	    	'}',
 	    '</script>';
 
     // Use nonce for verification
@@ -177,6 +186,9 @@ function mytheme_show_box() {
             case 'text':
                 echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
                 break;
+            case 'postcode':
+                echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" onchange="validatePostcode(this);" size="30" style="width:97%" />', '<br />', $field['desc'];
+                break;
             case 'textarea':
                 echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['desc'];
                 break;
@@ -186,7 +198,7 @@ function mytheme_show_box() {
                 break;
 		    case 'date':
 		        echo '<input type="text" name="', $field['id'], '" class="event_date" id="', $field['id'],
-		        '" value="', $meta ? date('m/d/y', $meta) : $field['std'], '" size="30" style="width:30px" />',
+		        '" value="', $meta ? date('m/d/y', $meta) : $field['std'], '" size="30" width="30px" />',
 		        '<br />', $field['desc'];
 		        echo '<script type="text/javascript">jQuery(document).ready(function(){jQuery(".event_date").datepicker();});</script>';
 		    	break;      

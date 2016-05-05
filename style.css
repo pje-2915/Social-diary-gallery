@@ -377,7 +377,8 @@ article.post:last-of-type {
 .eventdatatable input {
 	background-color:#005000;
     -webkit-border-radius: 7px;
-    border-radius: 7px; 
+    border-radius: 7px;
+    padding:2px;
 }
 
 #walkfinder {

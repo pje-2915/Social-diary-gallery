@@ -24,8 +24,8 @@ a:visited {
 	color: #40b0ff;
 }
 
-ul li.current-menu-item a:link,
-ul li.current-menu-item a:visited {
+#navdiv ul li.current-menu-item a:link,
+#navdiv ul li.current-menu-item a:visited {
 	color: #00FF00;
 }
 
@@ -66,6 +66,12 @@ div.container {
 	height:100%;
     overflow-x:hidden;
     overflow-y:auto;
+}
+
+
+.resourcecolumn ul li.current-menu-item a:link,
+.resourcecolumn ul li.current-menu-item a:visited {
+	color: white;
 }
 
 .resourcecolumn a:link {
@@ -124,6 +130,11 @@ div.container {
 	width:100%;
 }
 
+#hidden-search label
+{
+	color: #40b0ff;
+}
+
 #navdiv ul {
 	list-style: none;
 	display:table-row;
@@ -160,6 +171,10 @@ div.container {
 
 #imgcell {
 	background-color:#333333;
+}
+
+#hideshowButton1 img, #hideshowButton2 img {
+	background-color:#005000;
 }
 
 /* Smartphone */
@@ -319,12 +334,27 @@ article.post:last-of-type {
 	font-size:10px;
 }
 
-
 .site-footer-div p img {
 	margin:0px;
 	padding-left:3px;
 	padding-right:3px;
 	vertical-align: middle;
+}
+
+.footer-item {
+	float:left;
+	vertical-align: middle;
+	margin-left:7px;
+	margin-right:7px;
+	margin-top:5px;
+}
+
+.footer-item-right {
+	float:right;
+	vertical-align: middle;
+	margin-left:7px;
+	margin-right:7px;
+	margin-top:5px;
 }
 
 .maptable {

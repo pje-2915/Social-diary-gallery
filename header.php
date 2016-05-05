@@ -4,7 +4,15 @@
 		<meta charset="<?php bloginfo('charset');?>">
 		<meta name="viewport" content="width=device-width">
 		<title><?php bloginfo('name'); ?></title>
-		<?php wp_head(); ?>
+		<?php wp_head();
+		
+		// Sort out some icon include paths
+		$IconPath = get_bloginfo('template_directory');
+		$MenuIcon = '\''.$IconPath.'/img/menu.png'.'\'';
+		$MenuStrikeIcon = '\''.$IconPath.'/img/menu-strike.png'.'\'';
+		$magnifierIcon = '\''.$IconPath.'/img/magnifier.png'.'\'';
+		$magnifierStrikeIcon = '\''.$IconPath.'/img/magnifier-strike.png'.'\'';
+		?>
 
 		<script>
 
@@ -12,14 +20,14 @@
 			if(document.body.offsetWidth >= 800)
 			{
 			      var e1 = document.getElementById('navdiv-hidden');
-			      var b1 = document.getElementById('hideshowButton1');
+			      var b1 = document.getElementById('menuicon');
 			      var e2 = document.getElementById('hidden-search');
-			      var b2 = document.getElementById('hideshowButton2');
+			      var b2 = document.getElementById('searchicon');
 				
 		          e1.style.display = 'none';
-		          b1.innerHTML = '&#9776';
+		          b1.src=<?php echo $MenuIcon;?>;
 		          e2.style.display = 'none';
-		          b2.innerHTML = '?';
+		          b2.src=<?php echo $magnifierIcon;?>;
 			}
 		};
 		
@@ -29,19 +37,19 @@
 			alert(rawtext);
 		}
 
-	    function toggle_hidden_menu(buttonId, targetId, onTxt, offTxt)
+	    function toggle_hidden_menu(imgId, targetId, showIcon, hideIcon)
 	    {
 	       var e = document.getElementById(targetId);
-	       var b = document.getElementById(buttonId);
+	       var b = document.getElementById(imgId);
 	       if(e.style.display == 'table')
 	       {
 	          e.style.display = 'none';
-	          b.innerHTML = onTxt;
+	          b.src=showIcon;
 	       }
 	       else
 	       {
 	          e.style.display = 'table';
-	          b.innerHTML = offTxt;
+	          b.src= hideIcon;
 	       }
 	    }
 
@@ -73,7 +81,7 @@
 			
 			<div id="navdiv-small">
 				<ul>
-				<?php 
+				<?php 				
 					$args = array(
 							'theme_location' => 'primary-small',
 							'container' => false,
@@ -81,13 +89,16 @@
 					);
 					wp_nav_menu( $args ); ?>
 					<li>
-						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('hideshowButton1','navdiv-hidden','&#9776','&#9776');">&#9776</a>
+						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('menuicon','navdiv-hidden',<?php echo $MenuIcon.','.$MenuStrikeIcon;?>);">
+						<img id="menuicon" alt="Walkfinder" src=<?php echo $MenuIcon;?> width="25" height="25"></a>
 					</li>
 					<li>
-						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('hideshowButton2','hidden-search','?','?');">?</a>
+						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('searchicon','hidden-search',<?php echo $magnifierIcon.','.$magnifierStrikeIcon;?>);">
+						<img id="searchicon" alt="Walkfinder" src=<?php echo $magnifierIcon;?> width="25" height="25"></a>
 					</li>
 					<li id="imgcell">
-						<a id="imglink" href="http://www.ramblers.org.uk/go-walking.aspx"><img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25"></a>
+						<a id="imglink" href="http://www.ramblers.org.uk/go-walking.aspx">
+						<img alt="Walkfinder" src="<?php bloginfo('template_directory');?>/img/ramblers-logo.gif" width="30" height="25"></a>
 					</li>
 				</ul>	
 			</div>

@@ -7,11 +7,11 @@
 		<?php wp_head();
 		
 		// Sort out some icon include paths
-		$IconPath = get_bloginfo('template_directory');
-		$MenuIcon = '\''.$IconPath.'/img/menu.png'.'\'';
-		$MenuStrikeIcon = '\''.$IconPath.'/img/menu-strike.png'.'\'';
-		$magnifierIcon = '\''.$IconPath.'/img/magnifier.png'.'\'';
-		$magnifierStrikeIcon = '\''.$IconPath.'/img/magnifier-strike.png'.'\'';
+		$iconPath = get_bloginfo('template_directory');
+		$menuIcon = '\''.$iconPath.'/img/menu.png'.'\'';
+		$menuStrikeIcon = '\''.$iconPath.'/img/menu-strike.png'.'\'';
+		$magnifierIcon = '\''.$iconPath.'/img/magnifier.png'.'\'';
+		$magnifierStrikeIcon = '\''.$iconPath.'/img/magnifier-strike.png'.'\'';
 		?>
 
 		<script>
@@ -25,7 +25,7 @@
 			      var b2 = document.getElementById('searchicon');
 				
 		          e1.style.display = 'none';
-		          b1.src=<?php echo $MenuIcon;?>;
+		          b1.src=<?php echo $menuIcon;?>;
 		          e2.style.display = 'none';
 		          b2.src=<?php echo $magnifierIcon;?>;
 			}
@@ -37,20 +37,41 @@
 			alert(rawtext);
 		}
 
-	    function toggle_hidden_menu(imgId, targetId, showIcon, hideIcon)
+	    // We don't allow the user to show both optional sections together - if we do this it
+	    // pushes the midpage down to the point where it causes the footer to float up.
+	    
+	    function toggleSection(sectionId)
 	    {
-	       var e = document.getElementById(targetId);
-	       var b = document.getElementById(imgId);
-	       if(e.style.display == 'table')
-	       {
-	          e.style.display = 'none';
-	          b.src=showIcon;
-	       }
-	       else
-	       {
-	          e.style.display = 'table';
-	          b.src= hideIcon;
-	       }
+		    if(sectionId == 'navdiv-hidden')
+		    {
+			    if(document.getElementById('navdiv-hidden').style.display == 'none')
+			    {
+			    	document.getElementById('navdiv-hidden').style.display = 'table';
+			    	document.getElementById('hidden-search').style.display = 'none';
+				    document.getElementById('menuicon').src=<?php echo $menuStrikeIcon;?>;;
+				    document.getElementById('searchicon').src=<?php echo $magnifierIcon;?>;;
+			    }
+			    else
+			    {
+			    	document.getElementById(sectionId).style.display = 'none';
+				    
+			    }
+		    }
+		    else
+		    {
+			    if(document.getElementById('hidden-search').style.display == 'none')
+			    {
+			    	document.getElementById('navdiv-hidden').style.display = 'none';
+			    	document.getElementById('hidden-search').style.display = 'table';
+				    document.getElementById('menuicon').src=<?php echo $menuIcon;?>;;
+				    document.getElementById('searchicon').src=<?php echo $magnifierStrikeIcon;?>;;
+			    }
+			    else
+			    {
+			    	document.getElementById(sectionId).style.display = 'none';
+				    
+			    }
+		    }
 	    }
 
 		</script>
@@ -89,11 +110,11 @@
 					);
 					wp_nav_menu( $args ); ?>
 					<li>
-						<a id="hideshowButton1" href="#" onclick="toggle_hidden_menu('menuicon','navdiv-hidden',<?php echo $MenuIcon.','.$MenuStrikeIcon;?>);">
-						<img id="menuicon" alt="Walkfinder" src=<?php echo $MenuIcon;?> width="25" height="25"></a>
+						<a id="hideshowButton1" href="#" onclick="toggleSection('navdiv-hidden');">
+						<img id="menuicon" alt="Walkfinder" src=<?php echo $menuIcon;?> width="25" height="25"></a>
 					</li>
 					<li>
-						<a id="hideshowButton2" href="#" onclick="toggle_hidden_menu('searchicon','hidden-search',<?php echo $magnifierIcon.','.$magnifierStrikeIcon;?>);">
+						<a id="hideshowButton2" href="#" onclick="toggleSection('hidden-search');">
 						<img id="searchicon" alt="Walkfinder" src=<?php echo $magnifierIcon;?> width="25" height="25"></a>
 					</li>
 					<li id="imgcell">

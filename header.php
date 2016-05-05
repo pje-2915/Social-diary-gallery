@@ -54,7 +54,7 @@
 			    else
 			    {
 			    	document.getElementById(sectionId).style.display = 'none';
-				    
+				    document.getElementById('menuicon').src=<?php echo $menuIcon;?>;;				    
 			    }
 		    }
 		    else
@@ -69,7 +69,7 @@
 			    else
 			    {
 			    	document.getElementById(sectionId).style.display = 'none';
-				    
+				    document.getElementById('searchicon').src=<?php echo $magnifierIcon;?>;;
 			    }
 		    }
 	    }

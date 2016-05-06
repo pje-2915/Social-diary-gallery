@@ -68,11 +68,13 @@ div.container {
     overflow-y:auto;
 }
 
-
+/* Will only apply to bona-fide Wordpress menus, so won't work on
+   recent posts etc that are widgets - leave out until an answer appears
 .resourcecolumn ul li.current-menu-item a:link,
 .resourcecolumn ul li.current-menu-item a:visited {
 	color: white;
 }
+*/
 
 .resourcecolumn a:link {
 	color: #0078d5;

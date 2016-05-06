@@ -203,10 +203,10 @@ function mytheme_show_box() {
 		        echo '<script type="text/javascript">jQuery(document).ready(function(){jQuery(".event_date").datepicker();});</script>';
 		    	break;      
             case 'tel':
-                echo '<input type="tel" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
                 break;
             case 'email':
-                echo '<input type="email" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
                 break;
             case 'select':
             	if(get_post_type() == 'walk')

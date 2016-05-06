@@ -14,7 +14,7 @@ function add_hidden_contact($thispost)
 function add_maplink($thispost)
 {
 	$postcode = get_post_meta($thispost->ID, 'dbt_postcode', 'true');
-	if($postcode != '')
+	if($postcode != '' && $postcode != 'TBD')
 	{
 		?>
 		<input type="button" onclick="location.href='http://google.com/maps?q=<?php echo $postcode; ?>';" value="Go to Google Maps" />

@@ -68,19 +68,25 @@ div.container {
     overflow-y:auto;
 }
 
-/* Will only apply to bona-fide Wordpress menus, so won't work on
-   recent posts etc that are widgets - leave out until an answer appears
+.resourcecolumn a:link,
+.resourcecolumn a:visited {
+	color: #0078d5;
+}
+
+/* Highlight current resource menu item */
 .resourcecolumn ul li.current-menu-item a:link,
 .resourcecolumn ul li.current-menu-item a:visited {
 	color: white;
 }
-*/
 
-.resourcecolumn a:link {
+.resourcecolumn .post a {
 	color: #0078d5;
 }
-.resourcecolumn a:visited {
-	color: #0078d5;
+
+/* Highlight current resource widget item */
+.resourcecolumn .current-post a:link,
+.resourcecolumn .current-post a:visited {
+	color: white;
 }
 
 .blogcolumn {

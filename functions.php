@@ -268,3 +268,81 @@ function mytheme_save_data($post_id) {
         }
     }
 }
+    
+// Custom widget
+    // Creating the widget
+    class highlightable_recent extends WP_Widget {
+    
+    	function __construct() {
+    		parent::__construct(
+    		// Base ID of your widget
+    				'highlightable_recent',
+    
+    				// Widget name will appear in UI
+    				__('Highlightable Recent', 'highlightable_recent_domain'),
+    
+    				// Widget description
+    				array( 'description' => __( 'A recent post widget you can highlight', 'highlightable_recent_domain' ), )
+    				);
+    	}
+    
+    	// Creating widget front-end
+    	// This is where the action happens
+    	public function widget( $args, $instance ) {
+    		$title = apply_filters( 'widget_title', $instance['title'] );
+    		// before and after widget arguments are defined by themes
+    		echo $args['before_widget'];
+    		if ( ! empty( $title ) )
+    			echo $args['before_title'] . $title . $args['after_title'];
+    
+    		wp_reset_query();
+   			$catVal = get_the_category();
+   			$myCat = $catVal[0]->cat_ID;
+    		
+    		if(is_single()) {
+    			$post = get_queried_object();
+    		}
+    		$CurrentDisplayedPostID = $post->ID;
+   			global $post;
+   			
+   			$args = array( 'numberposts' => '6' );
+			$recent_posts = wp_get_recent_posts($args);
+			echo "<ul>";
+			foreach( $recent_posts as $recent ){ ?>
+				<li<?php if($CurrentDisplayedPostID == $recent["ID"]) { echo ' class="current-post"'; } ?>><a href="<?php echo get_permalink($recent["ID"]); ?>"><?php echo $recent["post_title"]; ?></a> </li><?php
+			}
+			echo "</ul>";
+    		echo $args['after_widget'];
+    	}
+    
+    	// Widget Backend
+    	public function form( $instance ) {
+    		if ( isset( $instance[ 'title' ] ) ) {
+    			$title = $instance[ 'title' ];
+    		}
+    		else {
+    			$title = __( 'New title', 'highlightable_recent_domain' );
+    		}
+    		// Widget admin form
+    		?>
+    <p>
+    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+    </p>
+    <?php 
+    }
+    	
+    // Updating widget replacing old instances with new
+    public function update( $new_instance, $old_instance ) {
+    $instance = array();
+    $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+    return $instance;
+    }
+} // Class highlightable_recent ends here
+    
+// Register and load the widget
+function wpb_load_widget() {
+	register_widget( 'highlightable_recent' );
+}
+add_action( 'widgets_init', 'wpb_load_widget' );
+    

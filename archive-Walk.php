@@ -17,7 +17,7 @@ $args = array(
 		),
 	),
 	'orderby' => 'key',
-	'order' => 'DSC',
+	'order' => 'ASC',
 );
 $query = new WP_Query( $args );
 ?>

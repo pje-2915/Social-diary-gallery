@@ -73,6 +73,11 @@ div.container {
 	color: #0078d5;
 }
 
+.resourcecolumn ul {
+	list-style: disc url(bullet.gif) inside;
+	padding-left:10px;
+}
+
 .resourcecolumn ul.mastermenu {
 	list-style-type: none;
 	padding-left:25px;

@@ -18,8 +18,8 @@ register_nav_menus(array(
 
 if ( function_exists('register_sidebar') )
 {
-	register_sidebar();
-	register_sidebar(array('name'=>'Hidden Search Widget',));
+	register_sidebar(array('id'=>'sidebar-id',));
+	register_sidebar(array('id'=>'hidden-search-widget-id', 'name'=>'Hidden Search Widget',));
 }
 
 // Add custom post type for Walks and Social.  We can then attach a custom meta data form to this
@@ -296,13 +296,11 @@ function mytheme_save_data($post_id) {
     			echo $args['before_title'] . $title . $args['after_title'];
     
     		wp_reset_query();
-   			$catVal = get_the_category();
-   			$myCat = $catVal[0]->cat_ID;
-    		
+   			$CurrentDisplayedPostID = 0;
     		if(is_single()) {
     			$post = get_queried_object();
+    			$CurrentDisplayedPostID = $post->ID;
     		}
-    		$CurrentDisplayedPostID = $post->ID;
    			global $post;
    			
    			$args = array( 'numberposts' => '6' );
@@ -312,7 +310,6 @@ function mytheme_save_data($post_id) {
 				<li<?php if($CurrentDisplayedPostID == $recent["ID"]) { echo ' class="current-post"'; } ?>><a href="<?php echo get_permalink($recent["ID"]); ?>"><?php echo $recent["post_title"]; ?></a> </li><?php
 			}
 			echo "</ul>";
-    		echo $args['after_widget'];
     	}
     
     	// Widget Backend
@@ -342,7 +339,7 @@ function mytheme_save_data($post_id) {
     
 // Register and load the widget
 function wpb_load_widget() {
-	register_widget( 'highlightable_recent' );
+    register_widget( 'highlightable_recent' );
 }
 add_action( 'widgets_init', 'wpb_load_widget' );
     

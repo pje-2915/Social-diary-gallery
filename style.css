@@ -89,6 +89,18 @@ div.container {
 	color: white;
 }
 
+.resourcecolumn .searchform label {
+	display:none;
+}
+
+.resourcecolumn #searchsubmit  {
+	color: #40B0FF;
+	background-color:#005000;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    padding:2px;
+}
+
 .blogcolumn {
     /* This makes the element grow and take all available space, not taken by the sidebar */
     flex-grow:1;
@@ -119,6 +131,7 @@ div.container {
 
 #headerdiv h5 {
 	margin: 0px;
+	color:#CCCCCC;
 }
 
 #headerdiv h1 {

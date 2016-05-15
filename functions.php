@@ -92,6 +92,13 @@ $meta_box = array(
             'std' => 'TBD'
         ),
         array(
+            'name' => 'Grid Reference',
+            'desc' => '',
+            'id' => $prefix . 'gridref',
+            'type' => 'gridref',
+            'std' => 'TBD'
+        ),
+    	array(
             'name' => 'Meet At',
             'desc' => '',
             'id' => $prefix . 'meetat',
@@ -166,7 +173,17 @@ function mytheme_show_box() {
 	        	'}',
 	        	'return isValid;',
 	    	'}',
-	    '</script>';
+	    	'function validateGridref(inputField) {',
+	    		/* OS or Landranger format */
+	        	'var isValid = /^([A-Z]{2}[0-9]{6})|([0-9]{6}[\, ][0-9]{6})$/.test(inputField.value);',
+	        	'if (isValid) {',
+	            	'inputField.style.backgroundColor = "#fff";',
+	        	'} else {',
+	            		'inputField.style.backgroundColor = "#fba";',
+	        	'}',
+	        	'return isValid;',
+	    	'}',
+	    	'</script>';
 
     // Use nonce for verification
     echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
@@ -188,6 +205,9 @@ function mytheme_show_box() {
                 break;
             case 'postcode':
                 echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" onchange="validatePostcode(this);" size="30" style="width:97%" />', '<br />', $field['desc'];
+                break;
+            case 'gridref':
+                echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" onchange="validateGridref(this);" size="30" style="width:97%" />', '<br />', $field['desc'];
                 break;
             case 'textarea':
                 echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['desc'];
@@ -257,11 +277,16 @@ function mytheme_save_data($post_id) {
     foreach ($meta_box['fields'] as $field) {
         $old = get_post_meta($post_id, $field['id'], true);
 	    $new = $_POST[$field['id']];
+	    
+	    if ($field['type'] == 'date') {
+	    	$new = strtotime($new);
+	    }
+	    
+	    if ($field['type'] == 'gridref') {
+	    	str_replace(","," ",$new);
+	    }
 
         if ($new && $new != $old) {
-        	if ($field['type'] == 'date') {
-            	$new = strtotime($new);
-        	}
             update_post_meta($post_id, $field['id'], $new);
         } elseif ('' == $new && $old) {
             delete_post_meta($post_id, $field['id'], $old);

@@ -256,7 +256,8 @@ function mytheme_save_data($post_id) {
     global $meta_box;
 
     // verify nonce
-    if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
+    if (!isset($_POST['mytheme_meta_box_nonce']) || !wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__)))
+    {
         return $post_id;
     }
 
@@ -266,11 +267,15 @@ function mytheme_save_data($post_id) {
     }
 
     // check permissions
-    if ('page' == $_POST['post_type']) {
-        if (!current_user_can('edit_page', $post_id)) {
+    if ('page' == $_POST['post_type'])
+    {
+        if (!current_user_can('edit_page', $post_id))
+        {
             return $post_id;
         }
-    } elseif (!current_user_can('edit_post', $post_id)) {
+    }
+    else if (!current_user_can('edit_post', $post_id))
+    {
         return $post_id;
     }
 
@@ -328,7 +333,7 @@ function mytheme_save_data($post_id) {
     		}
    			global $post;
    			
-   			$args = array( 'numberposts' => '6' );
+   			$args = array( 'numberposts' => '6', 'post_type' => array('post','Walk','Social'));
 			$recent_posts = wp_get_recent_posts($args);
 			echo "<ul>";
 			foreach( $recent_posts as $recent ){ ?>

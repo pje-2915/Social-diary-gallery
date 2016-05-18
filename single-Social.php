@@ -16,11 +16,8 @@ global $post;
 			<article class="post">
 				<h2><?php the_title();?></h2>
 				<?php
-					$ugly_time = get_post_meta($post->ID, 'dbt_date', 'true');
-					$meetInfo = date('D d M Y', $ugly_time)." at ".get_post_meta($post->ID, 'dbt_time', 'true').
-						' - Meeting Point: '. get_post_meta($post->ID, 'dbt_meetat', 'true').', '.
-						get_post_meta($post->ID, 'dbt_postcode', 'true');
-					?>
+					$meetInfo = soc_utils_get_title($post);
+				?>
 				<h4><?php echo $meetInfo; ?></h4>
 				<?php
 				echo '<b><table class="eventdatatable"><tr><td><p>Organiser:&nbsp&nbsp&nbsp '.get_post_meta($post->ID, 'dbt_contactname', 'true').'</p></td><td>';

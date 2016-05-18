@@ -11,6 +11,19 @@ function add_hidden_contact($thispost)
 	<?php
 }
 
+function soc_utils_get_title($thispost)
+{
+	$ugly_time = get_post_meta($thispost->ID, 'dbt_date', 'true');
+	$meetInfo = date('D d M Y', $ugly_time)." at ".get_post_meta($thispost->ID, 'dbt_time', 'true');
+	$meetat = get_post_meta($thispost->ID, 'dbt_meetat', 'true');
+	if($meetat != 'TBD' && $meetat != '')
+	{
+		$meetInfo=$meetInfo.' - Meeting Point: '. get_post_meta($thispost->ID, 'dbt_meetat', 'true').', '.
+				get_post_meta($thispost->ID, 'dbt_postcode', 'true');
+	}
+	return $meetInfo;
+}
+
 function add_maplink($thispost)
 {
 	$postcode = get_post_meta($thispost->ID, 'dbt_postcode', 'true');

@@ -12,7 +12,7 @@ get_header();
 			while (have_posts()) : the_post(); ?>
 		
 			<article class="post">
-				<h2><?php the_title(); echo ' - ('.get_post_meta($post->ID, 'dbt_grade', 'true').')';?></h2>
+				<h2><?php the_title(); echo ' - '.get_post_meta($post->ID, 'dbt_distance', 'true').', '.get_post_meta($post->ID, 'dbt_grade', 'true');?></h2>
 				<?php
 					$meetInfo = soc_utils_get_title($post);
 				?>

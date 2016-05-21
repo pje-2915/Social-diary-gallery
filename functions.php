@@ -71,6 +71,12 @@ $meta_box = array(
             'options' => array('Easy','Leisurely','Moderate','Strenuous')
         ),
         array(
+            'name' => 'Distance',
+            'id' => $prefix . 'distance',
+            'type' => 'text',
+            'std' => 'TBD'
+        	),
+    	array(
             'name' => 'Date',
             'desc' => 'Click to add a date',
             'id' => $prefix . 'date',

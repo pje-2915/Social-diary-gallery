@@ -73,7 +73,7 @@ $meta_box = array(
         array(
             'name' => 'Distance',
             'id' => $prefix . 'distance',
-            'type' => 'text',
+            'type' => 'distance',
             'std' => 'TBD'
         	),
     	array(
@@ -200,7 +200,7 @@ function mytheme_show_box() {
         // get current post meta data
         $meta = get_post_meta($post->ID, $field['id'], true);
 
-        if((get_post_type() == 'walk') || ($field['name'] != 'Grade'))
+        if((get_post_type() == 'walk') || (($field['name'] != 'Grade') && ($field['name'] != 'Distance')))
 		{
 			echo '<tr>';
         	echo '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>','<td>';
@@ -208,6 +208,12 @@ function mytheme_show_box() {
         switch ($field['type']) {
             case 'text':
                 echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                break;
+            case 'distance':
+            	if(get_post_type() == 'walk')
+            	{
+                	echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+            	}
                 break;
             case 'postcode':
                 echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" onchange="validatePostcode(this);" size="30" style="width:97%" />', '<br />', $field['desc'];

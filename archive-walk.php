@@ -8,6 +8,7 @@ get_header();
 global $post;     
 $args = array(
 	'post_type' => 'Walk',
+	'meta_key' => 'dbt_date',
 	'posts_per_page' => 4,
 	'meta_query' => array(
 		array(
@@ -16,7 +17,7 @@ $args = array(
 			'compare' => '>=',
 		),
 	),
-	'orderby' => 'key',
+	'orderby' => 'meta_value_num',
 	'order' => 'ASC',
 );
 $query = new WP_Query( $args );

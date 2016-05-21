@@ -107,7 +107,8 @@ div.container {
 	background-color:#005000;
     -webkit-border-radius: 7px;
     border-radius: 7px;
-    padding:2px;
+    padding-left:5px;
+    padding-right:10px;
 }
 
 .blogcolumn {

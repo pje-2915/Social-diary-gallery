@@ -9,6 +9,7 @@ global $post;
 $args = array(
 	'post_type' => 'Social',
 	'posts_per_page' => 4,
+	'meta_key' => 'dbt_date',
 	'meta_query' => array(
 		array(
 			'key' => 'dbt_date',
@@ -16,7 +17,7 @@ $args = array(
 			'compare' => '>=',
 		),
 	),
-	'orderby' => 'key',
+	'orderby' => 'meta_value_num',
 	'order' => 'ASC',
 );
 $query = new WP_Query( $args );
